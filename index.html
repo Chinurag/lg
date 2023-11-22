@@ -3,15 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  
+    <link rel="stylesheet" href="dark-mode.css">
+    
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <title>Life Graph</title>
+
+
+    <link rel="stylesheet" href="style-theme.css" id="style-theme">
+
+    <!-- Include additional themes -->
+    <link rel="stylesheet" href="dark-theme.css" id="dark-theme" disabled>
+    <link rel="stylesheet" href="premium-theme.css" id="premium-theme" disabled>
+    <link rel="stylesheet" href="old-theme.css" id="old-theme" disabled>
+
+    <!-- Rest of your head content... -->
+
+
 </head>
 <body>
+
+
+    <div class="theme-container">
+        <label for="theme-select">Select Theme:</label>
+        <select id="theme-select" onchange="changeTheme()">
+            <option value="style">Default</option>
+            <option value="dark">Dark</option>
+            <option value="premium">Premium</option>
+            <option value="old">Old</option>
+        </select>
+    </div>
+
+
+
+
     <div class="container">
-        <h1 class="title">Life Graph</h1>
+        <h1 class="title">AI Life Graph</h1>
+        <h3>Life is like an OCEAN and sea waves is a part of it, full of Ups and Downs which makes living life an amazing experience.</h3>
         <div class="form-container">
+
+
+
+ 
+
+
+
+
             <label for="name">Name:</label>
             <input type="text" id="name" placeholder="Enter your name">
 

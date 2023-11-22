@@ -1,12 +1,23 @@
+
+
+
 function showLifeGraph() {
     const name = document.getElementById('name').value;
     const dob = new Date(document.getElementById('dob').value);
     const zodiacSign = getZodiacSign(dob.getMonth() + 1, dob.getDate());
     const selectedYear = document.getElementById('year').value;
 
+
+        // Validate input fields
+        if (name.trim() === '' || dob === '' || selectedYear.trim() === '') {
+        alert('Please fill in all the fields before showing the life graph.');
+        return;
+    }
+
+
     // Display zodiac sign and specific line
     const resultContainer = document.getElementById('result-container');
-    resultContainer.innerHTML = `<p>Hello ${name}, your zodiac sign is ${zodiacSign}.</p>`;
+    resultContainer.innerHTML = `<p>Hello ${name}, your zodiac sign is ${zodiacSign}.<br><marquee>NOTE: 0 level = Average</marquee></p>`;
 
     // Add a specific line about the zodiac sign
     let zodiacInfo = '';
@@ -54,6 +65,186 @@ function showLifeGraph() {
 
     resultContainer.innerHTML += `<p>${zodiacInfo}</p>`;
 
+
+
+  // Convert the date of birth string to a Date object
+  const dobDate = new Date(dob);
+
+  
+ 
+
+
+    // Create a container for the career graph
+    const careerGraphContainer = document.createElement('canvas');
+    careerGraphContainer.id = 'career-graph';
+    resultContainer.appendChild(careerGraphContainer);
+
+    // Display career graph
+    const careerGraphData = generateGraphData(selectedYear);
+
+    new Chart(careerGraphContainer, {
+        type: 'line',
+        data: {
+            labels: getMonthLabels(),
+            datasets: [{
+                label: 'Career Level',
+                borderColor: '#0000ff', // You can choose a different color for the career graph
+                data: careerGraphData,
+                fill: false,
+                cubicInterpolationMode: 'monotone',
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: -6,
+                    max: 10
+                }
+            }
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+ // Create a container for the love graph
+ const loveGraphContainer = document.createElement('canvas');
+    loveGraphContainer.id = 'love-graph';
+    resultContainer.appendChild(loveGraphContainer);
+
+    // Display love graph
+    const loveGraphData = generateGraphData(selectedYear);
+
+    new Chart(loveGraphContainer, {
+        type: 'line',
+        data: {
+            labels: getMonthLabels(),
+            datasets: [{
+                label: 'Love Level',
+                borderColor: 'pink', // You can choose a different color for the love graph
+                data: loveGraphData,
+                fill: false,
+                cubicInterpolationMode: 'monotone',
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: -6,
+                    max: 10
+                }
+            }
+        }
+    });
+
+
+
+
+
+
+
+
+
+    // Create a container for the money graph
+    const moneyGraphContainer = document.createElement('canvas');
+    moneyGraphContainer.id = 'money-graph';
+    resultContainer.appendChild(moneyGraphContainer);
+
+    // Display money graph
+    const moneyGraphData = generateGraphData(selectedYear);
+
+    new Chart(moneyGraphContainer, {
+        type: 'line',
+        data: {
+            labels: getMonthLabels(),
+            datasets: [{
+                label: 'Money Level',
+                borderColor: '#00ff00', // You can choose a different color for the money graph
+                data: moneyGraphData,
+                fill: false,
+                cubicInterpolationMode: 'monotone',
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: -6,
+                    max: 10
+                }
+            }
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // Create a container for the health graph
+    const healthGraphContainer = document.createElement('canvas');
+    healthGraphContainer.id = 'health-graph';
+    resultContainer.appendChild(healthGraphContainer);
+
+    // Display health graph
+    const healthGraphData = generateGraphData(selectedYear);
+
+    new Chart(healthGraphContainer, {
+        type: 'line',
+        data: {
+            labels: getMonthLabels(),
+            datasets: [{
+                label: 'Health Level',
+                borderColor: '#9900cc', // You can choose a different color for the health graph
+                data: healthGraphData,
+                fill: false,
+                cubicInterpolationMode: 'monotone',
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: -6,
+                    max: 10
+                }
+            }
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // Create a container for the graph
     const graphContainer = document.createElement('canvas');
     graphContainer.id = 'life-graph';
@@ -84,9 +275,28 @@ function showLifeGraph() {
         }
     });
 
+
+
+
+
+
+
+
+
+
+
+
+    
+
     // Show result container
     resultContainer.style.display = 'block';
 }
+
+
+
+
+
+
 
 function generateGraphData(selectedYear) {
     // Generate random happiness levels for each month in the selected year
@@ -125,3 +335,20 @@ function getZodiacSign(month, day) {
 function getMonthLabels() {
     return ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 }
+
+
+
+
+
+        function changeTheme() {
+            const selectedTheme = document.getElementById('theme-select').value;
+
+            document.getElementById('style-theme').disabled = true;
+            document.getElementById('dark-theme').disabled = true;
+            document.getElementById('premium-theme').disabled = true;
+            document.getElementById('old-theme').disabled = true;
+
+            document.getElementById(`${selectedTheme}-theme`).disabled = false;
+        }
+
+    
